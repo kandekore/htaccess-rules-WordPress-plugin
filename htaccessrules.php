@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: My Htaccess Rules
+Plugin Name: .htaccess Rules
 Description: Allows you to add custom rules to your `.htaccess` file directly from your WordPress admin panel.
 Version:     1.0
 Author:      D.Kandekore

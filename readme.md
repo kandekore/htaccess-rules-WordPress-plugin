@@ -1,6 +1,6 @@
-# My Htaccess Rules Plugin
+# .htaccess Rules Plugin
 
-The **My Htaccess Rules** plugin allows you to add custom rules to your `.htaccess` file directly from your WordPress admin panel. The plugin provides a user-friendly interface for controlling specific rules like compression and caching.
+The **.htaccess Rules** plugin allows you to add custom rules to your `.htaccess` file directly from your WordPress admin panel. The plugin provides a user-friendly interface for controlling specific rules like compression and caching.
 
 ## Table of Contents
 
@@ -36,7 +36,7 @@ This plugin requires your server to be running Apache with the `mod_rewrite`, `m
 
 After activating the plugin, you will find a new settings page under the "Settings" menu in your WordPress admin area. Here you can:
 
-- Enable the plugin entirely by checking the "Enable My Htaccess Rules" box
+- Enable the plugin entirely by checking the "Enable .htaccess Rules" box
 - Enable compression rules by checking the "Enable Compression Rules" box
 - Enable caching rules by checking the "Enable Caching Rules" box
 
