@@ -38,10 +38,21 @@ class My_Htaccess_Rules {
             return;
         }
         self::remove_rules();
+        self::restore_backup();
         delete_option( self::OPTION_NAME );
         delete_option( self::OPTION_COMPRESSION );
         delete_option( self::OPTION_CACHING );
     }
+    
+    static function restore_backup() {
+        $htaccess_file = ABSPATH . '.htaccess';
+        $backup_file = ABSPATH . '.htaccess.bak'; // Backup file
+        if ( file_exists( $backup_file ) && is_readable( $backup_file ) && is_writable( ABSPATH ) ) {
+            // Copy .htaccess.bak to .htaccess
+            copy($backup_file, $htaccess_file);
+        }
+    }
+    
 
     function admin_menu() {
         add_options_page( 'My Htaccess Rules Settings', 'My Htaccess Rules', 'manage_options', 'my-htaccess-rules', array( $this, 'settings_page' ) );
@@ -81,13 +92,25 @@ class My_Htaccess_Rules {
         </div>
         <?php
     }
-
     function insert_rules() {
         $enabled = get_option( self::OPTION_NAME, 0 );
         if ( $enabled ) {
+            // Before flushing the rules, we backup the current .htaccess
+            $this->backup_htaccess();
+    
             flush_rewrite_rules();
         }
     }
+    
+    function backup_htaccess() {
+        $htaccess_file = ABSPATH . '.htaccess';
+        $backup_file = ABSPATH . '.htaccess.bak'; // Backup file
+        if ( file_exists( $htaccess_file ) && is_readable( $htaccess_file ) && is_writable( ABSPATH ) ) {
+            // Copy .htaccess to .htaccess.bak
+            copy($htaccess_file, $backup_file);
+        }
+    }
+    
 
     function add_rules( $rules ) {
         $enabled = get_option( self::OPTION_NAME, 0 );
