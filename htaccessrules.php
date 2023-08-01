@@ -56,6 +56,7 @@ class My_Htaccess_Rules {
 
     function admin_menu() {
         add_options_page( 'My Htaccess Rules Settings', 'My Htaccess Rules', 'manage_options', 'my-htaccess-rules', array( $this, 'settings_page' ) );
+        wp_enqueue_script( 'my-htaccess-rules-js', plugin_dir_url( __FILE__ ) . 'my-htaccess-rules.js', array(), '1.0', true );
     }
 
     function settings_page() {
@@ -70,23 +71,26 @@ class My_Htaccess_Rules {
         $compression_enabled = get_option( self::OPTION_COMPRESSION, 0 );
         $caching_enabled = get_option( self::OPTION_CACHING, 0 );
         ?>
-        <div class="wrap">
+           <div class="wrap">
             <h2>My Htaccess Rules Settings</h2>
             <form method="POST">
                 <label>
-                    <input type="checkbox" name="<?php echo self::OPTION_NAME; ?>" value="1" <?php checked( $enabled ); ?>>
-                    Enable My Htaccess Rules
+                    <input type="checkbox" id="main-switch" name="<?php echo self::OPTION_NAME; ?>" value="1" <?php checked( $enabled ); ?>>
+                    Enable Plugin
                 </label>
+                <p>Turn this on to enable the My Htaccess Rules plugin.</p>
                 <br>
                 <label>
-                    <input type="checkbox" name="<?php echo self::OPTION_COMPRESSION; ?>" value="1" <?php checked( $compression_enabled ); ?>>
+                    <input type="checkbox" class="dependent-checkbox" name="<?php echo self::OPTION_COMPRESSION; ?>" value="1" <?php checked( $compression_enabled ); echo ($enabled ? '' : 'disabled'); ?>>
                     Enable Compression Rules
                 </label>
+                <p>(Greyed out if above is not enabled) Compresses your site's HTML, CSS, JavaScript, and more to improve loading times.</p>
                 <br>
                 <label>
-                    <input type="checkbox" name="<?php echo self::OPTION_CACHING; ?>" value="1" <?php checked( $caching_enabled ); ?>>
+                    <input type="checkbox" class="dependent-checkbox" name="<?php echo self::OPTION_CACHING; ?>" value="1" <?php checked( $caching_enabled ); echo ($enabled ? '' : 'disabled'); ?>>
                     Enable Caching Rules
                 </label>
+                <p>(Greyed out if "Enable Plugin" is not enabled) Sets expiration times for certain types of content, reducing server load and improving performance.</p>
                 <?php submit_button(); ?>
             </form>
         </div>
