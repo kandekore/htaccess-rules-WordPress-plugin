@@ -151,7 +151,7 @@ class My_Htaccess_Rules {
   BrowserMatch ^Mozilla/4\.0[678] no-gzip
   BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
   Header append Vary User-Agent
-</IfModule> 
+  </IfModule>\n
 EOD;
             }
 
@@ -188,7 +188,7 @@ EOD;
   # Others
   ExpiresByType application/pdf "access plus 1 year"
   ExpiresByType image/vnd.microsoft.icon "access plus 1 year"
-</IfModule>
+  </IfModule>\n
 EOD;
             }
 
