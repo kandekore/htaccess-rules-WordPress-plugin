@@ -1,6 +1,6 @@
 # .htaccess Rules Plugin
 
-The **.htaccess Rules** plugin allows you to add custom rules to your `.htaccess` file directly from your WordPress admin panel. The plugin provides a user-friendly interface for controlling specific rules like compression and caching.
+The **.htaccess Rules** plugin allows you to add custom rules to your `.htaccess` file directly from your WordPress admin panel. The plugin provides a user-friendly interface for controlling specific rules like compression and caching for users who cant or don't know how to access the filemanager.
 
 ## Table of Contents
 
